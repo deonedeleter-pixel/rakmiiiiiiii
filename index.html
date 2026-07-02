@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Forgive Me?</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#ffeec9);
+    overflow:hidden;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    text-align:center;
+    max-width:500px;
+    width:90%;
+}
+
+.apology-img{
+    width:220px;
+    max-width:100%;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 8px 18px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#ff4d6d;
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.buttons{
+    position:relative;
+    height:80px;
+}
+
+button{
+    padding:12px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+#yesBtn{
+    background:#4CAF50;
+    color:white;
+}
+
+#yesBtn:hover{
+    transform:scale(1.08);
+}
+
+#noBtn{
+    background:#ff4d4d;
+    color:white;
+    position:absolute;
+    left:180px;
+    top:0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Replace apology.jpg with your own image -->
+    <img src="9f55a5bef293174898e9dde36fe326ab (1).jpg" class="apology-img" alt="Apology">
+
+    <h1>💖 Will You Forgive Me? 💖</h1>
+
+    <p>
+        I'm truly sorry for hurting you.
+        I never meant to make you sad.
+        You mean so much to me, and I hope you'll give me another chance. ❤️
+    </p>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+</div>
+
+<!-- Replace these with your own sound files -->
+<audio id="yesSound" src="dragon-studio-correct-472358.mp3"></audio>
+<audio id="noSound" src="eritnhut1992-buzzer-or-wrong-answer-20582.mp3"></audio>
+
+<script>
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const yesSound = document.getElementById("yesSound");
+const noSound = document.getElementById("noSound");
+
+function moveButton(){
+
+    noSound.currentTime = 0;
+    noSound.play();
+
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+yesBtn.addEventListener("click", () => {
+
+    yesSound.currentTime = 0;
+    yesSound.play();
+
+    document.body.innerHTML = `
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:linear-gradient(135deg,#ffd6e7,#ffeec9);
+        font-family:Arial;
+        text-align:center;
+        flex-direction:column;
+        padding:20px;
+    ">
+
+        <img src="OIP.webp"
+             style="width:250px;border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,.2);">
+
+        <h1 style="color:#ff4d6d;margin-top:25px;">
+            ❤️ Thank You! ❤️
+        </h1>
+
+        <p style="font-size:22px;color:#444;max-width:600px;">
+            Thank you for forgiving me. 🥹<br><br>
+            I promise to learn from my mistakes,
+            make you smile more,
+            and always treasure you. 🌹❤️
+        </p>
+
+    </div>
+    `;
+
+});
+
+</script>
+
+</body>
+</html>
